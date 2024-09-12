@@ -30,6 +30,16 @@ function hideTweetMetrics() {
 			relevantPerson.style.display = "none";
 		}
 	});
+
+	const replyMetricWhenMediaOpen = document.querySelectorAll(
+		'span[data-testid="app-text-transition-container"] > span > span',
+	);
+
+	if (replyMetricWhenMediaOpen) {
+		replyMetricWhenMediaOpen.forEach((reply) => {
+			reply.style.display = "none";
+		});
+	}
 }
 
 hideTweetMetrics();

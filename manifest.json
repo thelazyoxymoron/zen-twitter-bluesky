@@ -1,0 +1,12 @@
+{
+	"manifest_version": 2,
+	"name": "Zen Twitter",
+	"version": "1.1",
+	"description": "Hide metrics on Twitter (number of likes/retweets etc.)",
+	"content_scripts": [
+		{
+			"matches": ["https://x.com/*"],
+			"js": ["content-script.js"]
+		}
+	]
+}
