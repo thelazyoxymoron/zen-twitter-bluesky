@@ -1,11 +1,11 @@
 {
 	"manifest_version": 2,
-	"name": "Zen Twitter",
-	"version": "1.1",
-	"description": "Hide metrics on Twitter (number of likes/retweets etc.)",
+	"name": "Zen Twitter/Bluesky",
+	"version": "2.0",
+	"description": "Hide metrics on Twitter and Bluesky (number of likes/retweets/reposts/comments etc.)",
 	"content_scripts": [
 		{
-			"matches": ["https://x.com/*"],
+			"matches": ["https://x.com/*", "https://bsky.app/*"],
 			"js": ["content-script.js"]
 		}
 	]

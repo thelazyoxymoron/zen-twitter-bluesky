@@ -1,7 +1,6 @@
 function hideTweetMetrics() {
 	const tweetElements = document.querySelectorAll("article");
 
-	// biome-ignore lint:not necessarily a bad thing
 	tweetElements.forEach((tweet) => {
 		const likesElement = tweet.querySelectorAll(
 			'span[data-testid="app-text-transition-container"] > span > span',
@@ -16,7 +15,6 @@ function hideTweetMetrics() {
 		);
 
 		if (likesElement) {
-			// biome-ignore lint:not necessarily a bad thing
 			likesElement.forEach((like) => {
 				like.style.display = "none";
 			});
@@ -42,10 +40,42 @@ function hideTweetMetrics() {
 	}
 }
 
-hideTweetMetrics();
+function hideSkeetMetrics() {
+	const likeElements = document.querySelectorAll(
+		'div[data-testid="likeCount"]',
+	);
+	const repostElements = document.querySelectorAll(
+		'div[data-testid="repostCount"]',
+	);
+	const commentElements = document.querySelectorAll(
+		'button[data-testid="replyBtn"] > div',
+	);
 
-// Listen for new tweets and hide their metrics
-const observer = new MutationObserver(hideTweetMetrics);
+	likeElements.forEach((skeet) => {
+		skeet.style.display = "none";
+	});
+	repostElements.forEach((skeet) => {
+		skeet.style.display = "none";
+	});
+	commentElements.forEach((skeet) => {
+		skeet.style.display = "none";
+	});
+}
+
+function hideMetricsOnTwitterBluesky() {
+	if (window.location.href.startsWith("https://bsky.app/")) {
+		hideSkeetMetrics();
+	}
+
+	if (window.location.href.startsWith("https://x.com/")) {
+		hideTweetMetrics();
+	}
+}
+
+hideMetricsOnTwitterBluesky()
+
+// Listen for new tweets/skeets and hide their metrics
+const observer = new MutationObserver(hideMetricsOnTwitterBluesky);
 observer.observe(document.body, {
 	childList: true,
 	subtree: true,
