@@ -50,6 +50,12 @@ function hideSkeetMetrics() {
 	const commentElements = document.querySelectorAll(
 		'button[data-testid="replyBtn"] > div',
 	);
+	const repostInPostElements = document.querySelector(
+		'div[data-testid="repostCount-expanded"] > span',
+	);
+	const likesInPostElements = document.querySelector(
+		'div[data-testid="likeCount-expanded"] > span',
+	);
 
 	likeElements.forEach((skeet) => {
 		skeet.style.display = "none";
@@ -60,6 +66,8 @@ function hideSkeetMetrics() {
 	commentElements.forEach((skeet) => {
 		skeet.style.display = "none";
 	});
+	repostInPostElements.style.display = "none";
+	likesInPostElements.style.display = "none";
 }
 
 function hideMetricsOnTwitterBluesky() {
@@ -72,7 +80,7 @@ function hideMetricsOnTwitterBluesky() {
 	}
 }
 
-hideMetricsOnTwitterBluesky()
+hideMetricsOnTwitterBluesky();
 
 // Listen for new tweets/skeets and hide their metrics
 const observer = new MutationObserver(hideMetricsOnTwitterBluesky);
