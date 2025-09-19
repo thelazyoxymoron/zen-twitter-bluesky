@@ -56,11 +56,14 @@ function hideSkeetMetrics() {
 	const likesInPostElements = document.querySelector(
 		'div[data-testid="likeCount-expanded"] > span',
 	);
-	const expandedLikesInSinglePost = document.querySelector(
+	const expandedLikesInSinglePost = document.querySelectorAll(
 		'div[data-testid="likeCount-expanded"] > span',
 	);
-	const expandedSavesInSinglePost = document.querySelector(
+	const expandedSavesInSinglePost = document.querySelectorAll(
 		'div[data-testid="bookmarkCount-expanded"] > span',
+	);
+	const animatedLikeCounts = document.querySelectorAll(
+		'div[aria-disabled="true"]',
 	);
 
 	likeElements.forEach((skeet) => {
@@ -72,10 +75,19 @@ function hideSkeetMetrics() {
 	commentElements.forEach((skeet) => {
 		skeet.style.display = "none";
 	});
+
 	repostInPostElements.style.display = "none";
 	likesInPostElements.style.display = "none";
-	expandedLikesInSinglePost.style.display = "none";
-	expandedSavesInSinglePost.style.display = "none";
+
+	expandedLikesInSinglePost.forEach((skeet) => {
+		skeet.style.display = "none";
+	});
+	expandedSavesInSinglePost.forEach((skeet) => {
+		skeet.style.display = "none";
+	});
+	animatedLikeCounts.forEach((skeet) => {
+		skeet.style.display = "none";
+	});
 }
 
 function hideMetricsOnTwitterBluesky() {
