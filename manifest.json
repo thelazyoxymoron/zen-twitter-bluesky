@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Zen Twitter/Bluesky",
-	"version": "2.1",
+	"version": "2.2",
 	"description": "Hide metrics on Twitter and Bluesky (number of likes/retweets/reposts/comments etc.)",
 	"content_scripts": [
 		{

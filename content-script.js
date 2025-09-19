@@ -1,109 +1,60 @@
-function hideTweetMetrics() {
-	const tweetElements = document.querySelectorAll("article");
+const SITE_CONFIGS = {
+	"x.com": [
+		// Like, Repost, View counts under a tweet
+		'article span[data-testid="app-text-transition-container"] > span > span',
 
-	tweetElements.forEach((tweet) => {
-		const likesElement = tweet.querySelectorAll(
-			'span[data-testid="app-text-transition-container"] > span > span',
-		);
+		// "Timeline: Trending now" sidebar module
+		'div[aria-label="Timeline: Trending now"]',
 
-		const timelineElement = tweet.querySelector(
-			'div[aria-label="Timeline: Trending now"]',
-		);
-
-		const relevantPeopleElement = tweet.querySelector(
-			'aside[aria-label="Relevant people"]',
-		);
-
-		if (likesElement) {
-			likesElement.forEach((like) => {
-				like.style.display = "none";
-			});
-		}
-
-		if (timelineElement) {
-			timeline.style.display = "none";
-		}
-
-		if (relevantPeopleElement) {
-			relevantPerson.style.display = "none";
-		}
-	});
-
-	const replyMetricWhenMediaOpen = document.querySelectorAll(
-		'span[data-testid="app-text-transition-container"] > span > span',
-	);
-
-	if (replyMetricWhenMediaOpen) {
-		replyMetricWhenMediaOpen.forEach((reply) => {
-			reply.style.display = "none";
-		});
-	}
-}
-
-function hideSkeetMetrics() {
-	const likeElements = document.querySelectorAll(
+		// "Relevant people" sidebar module
+		'aside[aria-label="Relevant people"]',
+	],
+	"bsky.app": [
+		// Like and repost counts in the feed
 		'div[data-testid="likeCount"]',
-	);
-	const repostElements = document.querySelectorAll(
 		'div[data-testid="repostCount"]',
-	);
-	const commentElements = document.querySelectorAll(
+
+		// Reply count next to the reply button
 		'button[data-testid="replyBtn"] > div',
-	);
-	const repostInPostElements = document.querySelector(
+
+		// Expanded counts when viewing a single post
 		'div[data-testid="repostCount-expanded"] > span',
-	);
-	const likesInPostElements = document.querySelector(
 		'div[data-testid="likeCount-expanded"] > span',
-	);
-	const expandedLikesInSinglePost = document.querySelectorAll(
-		'div[data-testid="likeCount-expanded"] > span',
-	);
-	const expandedSavesInSinglePost = document.querySelectorAll(
 		'div[data-testid="bookmarkCount-expanded"] > span',
-	);
-	const animatedLikeCounts = document.querySelectorAll(
+
+		// Elements that may show animated like counts
 		'div[aria-disabled="true"]',
-	);
+	],
+};
 
-	likeElements.forEach((skeet) => {
-		skeet.style.display = "none";
-	});
-	repostElements.forEach((skeet) => {
-		skeet.style.display = "none";
-	});
-	commentElements.forEach((skeet) => {
-		skeet.style.display = "none";
-	});
+function hideElementsBySelector(selector) {
+	const elements = document.querySelectorAll(selector);
 
-	repostInPostElements.style.display = "none";
-	likesInPostElements.style.display = "none";
-
-	expandedLikesInSinglePost.forEach((skeet) => {
-		skeet.style.display = "none";
-	});
-	expandedSavesInSinglePost.forEach((skeet) => {
-		skeet.style.display = "none";
-	});
-	animatedLikeCounts.forEach((skeet) => {
-		skeet.style.display = "none";
+	elements.forEach((element) => {
+		if (element.style.display !== "none") {
+			element.style.display = "none";
+		}
 	});
 }
 
-function hideMetricsOnTwitterBluesky() {
-	if (window.location.href.startsWith("https://bsky.app/")) {
-		hideSkeetMetrics();
-	}
+function hideAllMetrics() {
+	const currentHostname = window.location.hostname;
 
-	if (window.location.href.startsWith("https://x.com/")) {
-		hideTweetMetrics();
+	for (const siteHostname in SITE_CONFIGS) {
+		if (currentHostname.includes(siteHostname)) {
+			const selectorsToHide = SITE_CONFIGS[siteHostname];
+			selectorsToHide.forEach(hideElementsBySelector);
+
+			// Once the correct site is found and processed, break
+			break;
+		}
 	}
 }
 
-hideMetricsOnTwitterBluesky();
+hideAllMetrics();
 
 // Listen for new tweets/skeets and hide their metrics
-const observer = new MutationObserver(hideMetricsOnTwitterBluesky);
+const observer = new MutationObserver(hideAllMetrics);
 observer.observe(document.body, {
 	childList: true,
 	subtree: true,
