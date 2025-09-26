@@ -21,6 +21,7 @@ const SITE_CONFIGS = {
 		'div[data-testid="repostCount-expanded"] > span',
 		'div[data-testid="likeCount-expanded"] > span',
 		'div[data-testid="bookmarkCount-expanded"] > span',
+		'div[data-testid="quoteCount-expanded"] > span',
 
 		// Elements that may show animated like counts
 		'div[aria-disabled="true"]',
