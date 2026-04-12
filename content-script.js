@@ -11,7 +11,7 @@ const SITE_CONFIGS = {
 	],
 	"bsky.app": [
 		// Like and repost counts in the feed
-		'div[data-testid="likeCount"]',
+		'div[data-testid="likeBtn"]',
 		'div[data-testid="repostCount"]',
 
 		// Reply count next to the reply button
