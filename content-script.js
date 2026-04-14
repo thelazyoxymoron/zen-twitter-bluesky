@@ -1,7 +1,10 @@
 const SITE_CONFIGS = {
 	"x.com": [
 		// Like, Repost, View counts under a tweet
-		'article span[data-testid="app-text-transition-container"] > span > span',
+		// 'article span[data-testid="app-text-transition-container"] > span > span',
+
+		// This gets rid of the animated like counts, along with likes/repots/view counts etc.
+		'span[data-testid="app-text-transition-container"]',
 
 		// "Timeline: Trending now" sidebar module
 		'div[aria-label="Timeline: Trending now"]',
