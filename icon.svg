@@ -1,0 +1,38 @@
+<svg viewBox="0 0 512 512" width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#D94430" />
+            <stop offset="100%" stop-color="#9C2714" />
+        </linearGradient>
+
+        <linearGradient id="ensoFade" x1="420" y1="140" x2="140" y2="420" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFFDFB" stop-opacity="0" />
+            <stop offset="15%" stop-color="#FFFDFB" stop-opacity="0.7" />
+            <stop offset="30%" stop-color="#FFFDFB" stop-opacity="1" />
+            <stop offset="100%" stop-color="#FFFDFB" stop-opacity="1" />
+        </linearGradient>
+
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#4A0F06" flood-opacity="0.4" />
+        </filter>
+    </defs>
+
+    <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+    <g filter="url(#shadow)">
+        
+        <path d="M 402 172 A 168 168 0 1 1 256 88" 
+              fill="none" 
+              stroke="url(#ensoFade)" 
+              stroke-width="36" 
+              stroke-linecap="round" />
+
+        <circle cx="256" cy="200" r="24" fill="#FFFDFB" />
+
+        <line x1="156" y1="288" x2="356" y2="288" 
+              stroke="#FFFDFB" 
+              stroke-width="28" 
+              stroke-linecap="round" />
+              
+    </g>
+</svg>
