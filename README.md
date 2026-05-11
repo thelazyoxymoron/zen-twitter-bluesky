@@ -1,4 +1,4 @@
-# Zen Twitter/Bluesky
+# Zen Social
 
 A simple script packaged as a web extension to make your Twitter(X) and Bluesky experience free of distractions.
 
@@ -8,7 +8,7 @@ A simple script packaged as a web extension to make your Twitter(X) and Bluesky 
 
 ## Installation
 
-- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/zen-twitter/)
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/zen-social/)
 
 ## Inspiration
 
