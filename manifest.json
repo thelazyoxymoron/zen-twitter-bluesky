@@ -3,6 +3,16 @@
 	"name": "Zen Social",
 	"version": "2.8",
 	"description": "Hide metrics on social media sites. Currently supports Twitter and Bluesky (hides number of likes/retweets/reposts/comments etc.)",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "{529a5283-3b37-4f1e-b573-253eef3cbccb}",
+			"data_collection_permissions": {
+				"required": [
+					"none"
+				]
+			}
+		}
+	},
 	"content_scripts": [
 		{
 			"matches": ["https://x.com/*", "https://bsky.app/*"],
