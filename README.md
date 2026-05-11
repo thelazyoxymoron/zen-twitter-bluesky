@@ -1,5 +1,7 @@
 # Zen Social
 
+This project has migrated to Codeberg: https://codeberg.org/siddharthagolu/zen-social. No further updates will be made in this repo.
+
 A simple script packaged as a web extension to make your Twitter(X) and Bluesky experience free of distractions.
 
 ![Screenshot 2024-09-12 at 1 24 19 PM](https://github.com/user-attachments/assets/639b53e6-6e34-4386-9243-661b3de6f674)
